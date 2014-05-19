@@ -2,7 +2,10 @@
 
 require 'pathname'
 
-if Pathname.new(ARGV.first).join("Gemfile").exist?
+$:.unshift File.expand_path("../../lib", __FILE__)
+require "language_pack/shell_helpers"
+
+if LanguagePack::ShellHelpers.app_path(ARGV.first).join("Gemfile").exist?
   puts "Ruby"
   exit 0
 else

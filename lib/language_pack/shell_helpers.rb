@@ -37,6 +37,11 @@ module LanguagePack
       end
     end
 
+    def self.app_path(full_path)
+      path = Pathname.new full_path
+      path.join ENV['APP_ROOT'] if ENV['APP_ROOT']
+    end
+
     # display error message and stop the build process
     # @param [String] error message
     def error(message)
